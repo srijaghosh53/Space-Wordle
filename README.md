@@ -11,6 +11,14 @@ A space-themed Wordle game built using Python and Flask.
 - Space-themed UI
 - Instructions section for players
 
+
+## Screenshots
+
+### Home Page
+![Space Wordle Home Page](screenshots/home.png)
+### Game Page
+![Space Wordle Game Page](screenshots/game.png)
+
 ## Technologies Used
 
 - Python
@@ -30,3 +38,5 @@ A space-themed Wordle game built using Python and Flask.
 python app.py
 ```
 `Open http://127.0.0.1:5000/ in your browser.`
+
+<!-- screenshots added -->
