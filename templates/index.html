@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Wordle Game</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="game">
+
+        <h1>WORDNOVA</h1>
+
+        <p>Guess the 5-letter word</p>
+
+        <!-- Instructions -->
+        <div class="instructions">
+
+            <h3>🚀 HOW TO PLAY</h3>
+
+            <p>Guess the hidden <strong>5-letter word</strong> in 7 attempts.</p>
+
+            <p>🟦 <span class="cyan">Cyan</span> → Correct letter & correct position</p>
+
+            <p>🟪 <span class="purple">Purple</span> → Correct letter & wrong position</p>
+
+            <p>⬛ <span class="gray">Dark</span> → Letter is not in the word</p>
+
+            <p>🌌 Use the clues to find the word before you run out of attempts!</p>
+
+        </div>
+
+        {% for attempt in attempts %}
+
+        <div class="row">
+
+            {% for i in range(5) %}
+
+            <div class="box {{ attempt.result[i] }}">
+                {{ attempt.guess[i] }}
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+        {% endfor %}
+
+        {% if not game_over %}
+
+        <form method="POST" autocomplete="off">
+
+            <input
+                type="text"
+                name="guess"
+                maxlength="5"
+                placeholder="ENTER WORD"
+                autocomplete="off"
+                required
+            >
+
+            <button type="submit">
+                GUESS
+            </button>
+
+        </form>
+
+        {% endif %}
+
+        <p>
+            Attempts: {{ attempts|length }} / 7
+        </p>
+
+        {% if message %}
+
+        <h2>{{ message }}</h2>
+
+        {% endif %}
+
+        {% if game_over %}
+
+        <a href="/restart">
+            <button>PLAY AGAIN</button>
+        </a>
+
+        {% endif %}
+
+    </div>
+
+</body>
+
+</html>
